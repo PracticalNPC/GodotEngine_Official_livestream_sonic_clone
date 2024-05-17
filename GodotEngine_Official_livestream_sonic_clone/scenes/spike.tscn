@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6f5kcnds77ur"]
+
+[ext_resource type="Script" path="res://scenes/spike.gd" id="1_cykxr"]
+
+[node name="Spike" type="Node2D"]
+script = ExtResource("1_cykxr")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 4, -8, 8, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(4, -8, 0, 0, 8, 0)

@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://bets88n2yk77p"]
+
+[ext_resource type="Script" path="res://scenes/collectible.gd" id="1_aao34"]
+[ext_resource type="Shader" path="res://scenes/collectible.gdshader" id="1_j4gpy"]
+[ext_resource type="Texture2D" uid="uid://bwp82yq3g26b" path="res://icon.svg" id="1_p6ubd"]
+[ext_resource type="AudioStream" uid="uid://cakrfx32oowod" path="res://assets/coin.wav" id="4_b67ed"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8hj1f"]
+radius = 80.0
+
+[sub_resource type="Animation" id="Animation_buw8u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.05, 0.05)]
+}
+
+[sub_resource type="Animation" id="Animation_njpdc"]
+resource_name = "spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(-0.1, 0.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_of15l"]
+_data = {
+"RESET": SubResource("Animation_buw8u"),
+"spin": SubResource("Animation_njpdc")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t64gh"]
+render_priority = 0
+shader = ExtResource("1_j4gpy")
+
+[node name="Collectible" type="Node2D"]
+script = ExtResource("1_aao34")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(0.05, 0.05)
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+z_index = 1
+shape = SubResource("CircleShape2D_8hj1f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CollectibleSprite")
+libraries = {
+"": SubResource("AnimationLibrary_of15l")
+}
+
+[node name="CollectibleSprite" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0, 1)
+material = SubResource("ShaderMaterial_t64gh")
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_p6ubd")
+
+[node name="collectSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_b67ed")
+volume_db = -5.0
+
+[connection signal="finished" from="collectSound" to="." method="_on_collect_sound_finished"]

@@ -1,0 +1,445 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpo1jsh3o08cf"]
+
+[ext_resource type="Script" path="res://scenes/terain.gd" id="1_0mxle"]
+[ext_resource type="PackedScene" uid="uid://b3ts233w4wgax" path="res://scenes/player2.tscn" id="3_cr5ss"]
+[ext_resource type="PackedScene" uid="uid://bets88n2yk77p" path="res://scenes/collectible.tscn" id="3_jsf25"]
+[ext_resource type="PackedScene" uid="uid://b6f5kcnds77ur" path="res://scenes/spike.tscn" id="4_rwj8a"]
+
+[node name="Terain" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_0mxle")
+metadata/_edit_horizontal_guides_ = [396.0]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(165, 343)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(200, 18)
+polygon = PackedVector2Array(435, 96, 443, 105, 483, 105, 571, 105, 635, 105, 699, 105, 707, 97, 715, 89, 723, 81, 731, 73, 739, 65, 747, 57, 755, 49, 763, 41, 764, 39, 765, 36, 766, 31, 767, 28, 768, 25, 768, 21, 767, 17, 765, 14, 762, 12, 757, 10, 751, 10, 743, 10, 727, 17, 718, 30, 710, 42, 705, 51, 698, 66, 678, 76, 667, 78, 660, 79, 653, 80, 676, 73, 680, 70, 686.403, 65.7975, 690, 63, 731, -87, 723, -87, 715, -87, 707, -87, 691, -87, 683, -79, 675, -71, 667, -63, 667, -47, 667, -31, 651, -23, 560, 33, 593, 8, 600, -14, 595, -36, 581, -58, 552, -79, 522, -92, 473, -91, 442.674, -50.5648, 434, -37, 420.297, -19.3821, 403, 6, 395, 15, 383, 16, 390, 10, 396, 6, 400, 3, 405, -3, 409, -11, 423, -40, 445, -97, 675, -103, 771, -111, 861, -22, 851, 121, 796, 169, 371, 161, 307, 65, 257, 42, 258, 32, 292, 20, 333, 35, 391, 38, 539, 14, 514, 21, 499, 26, 476, 34, 457, 44, 443, 58, 436, 73, 433, 85)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-391, 3)
+polygon = PackedVector2Array(621, 119, 526, 92, 472, 75, 469, 73, 463, 69, 457, 62, 449, 53, 445, 48, 442, 44, 440, 36, 424, -11, 441, -47, 459, -61, 499, -70, 533, -62, 557, -45, 565, -20, 568, 3, 567, 20, 557, 38, 576, 38, 588, 21, 589, -12, 584, -41, 562, -70, 542, -85, 513, -91, 484, -94, 448, -87, 420, -73, 400, -59, 385, 8, 402, 36, 422, 72, 458, 101, 500, 123, 599, 163, 626, 149)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-764, -8)
+polygon = PackedVector2Array(1000, 242, 1299, 311, 1820, 242, 1864, 122, 1858, -8, 1837, -78, 1788, -169, 1727, -224, 1663, -254, 1561, -269, 1461, -280, 1408, -280, 1355, -269, 1250, -166, 1194, -120, 1128, -100, 1010, -148, 897, -302, 1142, -746, 1793, -706, 2215, -497, 2269, 42, 2135, 379, 979, 464, 480, 408, 375, 287, 226, -120, 875, -939, 983, -489, 785, -587, 743, -468, 676, -327, 528, -190, 479, -30)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-791, 37)
+polygon = PackedVector2Array(978, -140, 968, -143, 959, -147, 954, -150, 951, -156, 945, -164, 937, -173, 931, -181, 925, -192, 902, -224, 900, -200, 899, -185, 900, -157, 913, -136, 935, -122, 948, -115, 975, -90, 991, -44)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-629, 197)
+polygon = PackedVector2Array(923, -122, 927, -95, 930, -77, 938, -57, 958, -35, 994, -30, 1021, -32, 1047, -41, 1071, -80, 1079, -103, 1083, -122, 1087, -133, 1097, -139, 1114, -129, 1114, -105, 1109, -79, 1102, -52, 1088, -37, 1066, -28, 1039, -22, 856, -1, 889, -35, 899, -63, 905, -98, 923, -152)
+
+[node name="Player2" parent="." instance=ExtResource("3_cr5ss")]
+position = Vector2(995, 452)
+
+[node name="collectibles" type="Node2D" parent="."]
+
+[node name="Collectible" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(929, 384)
+
+[node name="Collectible2" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(940, 375)
+
+[node name="Collectible3" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(952, 359)
+
+[node name="Collectible4" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(954, 341)
+
+[node name="Collectible5" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(948, 322)
+
+[node name="Collectible6" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(930, 303)
+
+[node name="Collectible7" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(903, 283)
+
+[node name="Collectible8" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(856, 461)
+
+[node name="Collectible27" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(870, 460)
+
+[node name="Collectible28" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(883, 460)
+
+[node name="Collectible29" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(767, 525)
+
+[node name="Collectible30" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(782, 525)
+
+[node name="Collectible31" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(796, 526)
+
+[node name="Collectible9" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(844, 461)
+
+[node name="Collectible10" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(830, 459)
+
+[node name="Collectible32" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(839, 840)
+
+[node name="Collectible33" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(857, 837)
+
+[node name="Collectible34" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(874, 836)
+
+[node name="Collectible35" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(889, 835)
+
+[node name="Collectible36" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(927, 831)
+
+[node name="Collectible37" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(907, 834)
+
+[node name="Collectible38" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(820, 842)
+
+[node name="Collectible39" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(800, 843)
+
+[node name="Collectible40" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(994, 818)
+
+[node name="Collectible41" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1012, 815)
+
+[node name="Collectible42" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(937, 605)
+
+[node name="Collectible43" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(952, 604)
+
+[node name="Collectible44" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(990, 600)
+
+[node name="Collectible45" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(970, 603)
+
+[node name="Collectible46" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(975, 820)
+
+[node name="Collectible47" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(955, 821)
+
+[node name="Collectible48" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1058, 589)
+
+[node name="Collectible49" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1076, 586)
+
+[node name="Collectible50" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1093, 585)
+
+[node name="Collectible51" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1108, 584)
+
+[node name="Collectible52" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1146, 580)
+
+[node name="Collectible99" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1219, 561)
+
+[node name="Collectible100" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1225, 549)
+
+[node name="Collectible101" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1228, 534)
+
+[node name="Collectible102" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1234, 523)
+
+[node name="Collectible103" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1239, 507)
+
+[node name="Collectible104" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1245, 495)
+
+[node name="Collectible105" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1248, 480)
+
+[node name="Collectible106" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1254, 469)
+
+[node name="Collectible107" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1257, 451)
+
+[node name="Collectible108" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1258, 434)
+
+[node name="Collectible109" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1257, 418)
+
+[node name="Collectible110" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1256, 402)
+
+[node name="Collectible111" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1255, 387)
+
+[node name="Collectible112" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1253, 367)
+
+[node name="Collectible113" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1253, 348)
+
+[node name="Collectible114" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1249, 333)
+
+[node name="Collectible115" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1246, 315)
+
+[node name="Collectible116" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1241, 292)
+
+[node name="Collectible117" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1236, 279)
+
+[node name="Collectible118" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1232, 261)
+
+[node name="Collectible119" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1227, 249)
+
+[node name="Collectible120" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1221, 237)
+
+[node name="Collectible121" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1214, 225)
+
+[node name="Collectible122" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1210, 217)
+
+[node name="Collectible53" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1126, 583)
+
+[node name="Collectible54" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1039, 591)
+
+[node name="Collectible55" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1019, 592)
+
+[node name="Collectible56" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(-57, 322)
+
+[node name="Collectible57" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(-38, 327)
+
+[node name="Collectible58" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(-21, 336)
+
+[node name="Collectible59" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(-5, 350)
+
+[node name="Collectible60" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(31, 365)
+
+[node name="Collectible64" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(50, 388)
+
+[node name="Collectible65" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(79, 399)
+
+[node name="Collectible66" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(100, 413)
+
+[node name="Collectible67" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(120, 421)
+
+[node name="Collectible68" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(141, 433)
+
+[node name="Collectible69" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(184, 456)
+
+[node name="Collectible71" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(206, 470)
+
+[node name="Collectible72" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(225, 480)
+
+[node name="Collectible73" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(245, 488)
+
+[node name="Collectible74" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(262, 500)
+
+[node name="Collectible75" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(285, 508)
+
+[node name="Collectible76" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(308, 521)
+
+[node name="Collectible77" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(336, 531)
+
+[node name="Collectible78" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(464, 418)
+
+[node name="Collectible79" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(467, 434)
+
+[node name="Collectible80" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(469, 446)
+
+[node name="Collectible81" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(471, 460)
+
+[node name="Collectible82" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(475, 473)
+
+[node name="Collectible83" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(481, 484)
+
+[node name="Collectible84" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(491, 491)
+
+[node name="Collectible85" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(501, 497)
+
+[node name="Collectible86" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(513, 501)
+
+[node name="Collectible87" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(524, 501)
+
+[node name="Collectible88" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(537, 502)
+
+[node name="Collectible89" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(551, 501)
+
+[node name="Collectible90" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(563, 497)
+
+[node name="Collectible91" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(574, 493)
+
+[node name="Collectible92" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(583, 484)
+
+[node name="Collectible93" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(591, 473)
+
+[node name="Collectible94" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(597, 459)
+
+[node name="Collectible95" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(601, 450)
+
+[node name="Collectible96" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(606, 435)
+
+[node name="Collectible97" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(609, 427)
+
+[node name="Collectible98" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(614, 413)
+
+[node name="Collectible70" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(167, 446)
+
+[node name="Collectible61" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(16, 358)
+
+[node name="Collectible62" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(-80, 314)
+
+[node name="Collectible63" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(-101, 303)
+
+[node name="Collectible11" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(813, 451)
+
+[node name="Collectible12" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(811, 431)
+
+[node name="Collectible13" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(823, 414)
+
+[node name="Collectible14" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(847, 403)
+
+[node name="Collectible15" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(865, 394)
+
+[node name="Collectible16" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(882, 387)
+
+[node name="Collectible17" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1069, 453)
+
+[node name="Collectible18" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1079, 443)
+
+[node name="Collectible19" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1092, 430)
+
+[node name="Collectible20" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1105, 416)
+
+[node name="Collectible21" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1117, 403)
+
+[node name="Collectible22" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1117, 403)
+
+[node name="Collectible23" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1123, 392)
+
+[node name="Collectible24" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1123, 379)
+
+[node name="Collectible25" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1109, 378)
+
+[node name="Collectible26" parent="collectibles" instance=ExtResource("3_jsf25")]
+position = Vector2(1093, 390)
+
+[node name="Spikes" type="Node2D" parent="."]
+
+[node name="Spike" parent="Spikes" instance=ExtResource("4_rwj8a")]
+position = Vector2(906, 620)
+rotation = -0.129691
+
+[node name="Spike2" parent="Spikes" instance=ExtResource("4_rwj8a")]
+position = Vector2(900, 621)
+rotation = -0.129691
+
+[node name="Spike3" parent="Spikes" instance=ExtResource("4_rwj8a")]
+position = Vector2(892, 622)
+rotation = -0.129691
+
+[node name="Spike4" parent="Spikes" instance=ExtResource("4_rwj8a")]
+position = Vector2(884, 623)
+rotation = -0.129691
+
+[node name="Spike5" parent="Spikes" instance=ExtResource("4_rwj8a")]
+position = Vector2(912, 467)
+rotation = 0.0266034
+
+[node name="Spike6" parent="Spikes" instance=ExtResource("4_rwj8a")]
+position = Vector2(919, 467)
+rotation = 0.0266034
+
+[node name="Spike7" parent="Spikes" instance=ExtResource("4_rwj8a")]
+position = Vector2(927, 467)
+rotation = 0.0266034
+
+[node name="Spike8" parent="Spikes" instance=ExtResource("4_rwj8a")]
+position = Vector2(934, 467)
+rotation = 0.0266034
+
+[node name="Spike9" parent="Spikes" instance=ExtResource("4_rwj8a")]
+position = Vector2(942, 467)
+rotation = 0.0266034

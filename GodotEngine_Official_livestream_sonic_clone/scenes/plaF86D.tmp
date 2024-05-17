@@ -1,0 +1,166 @@
+[gd_scene load_steps=10 format=3 uid="uid://b3ts233w4wgax"]
+
+[ext_resource type="Texture2D" uid="uid://bwp82yq3g26b" path="res://icon.svg" id="1_4l272"]
+[ext_resource type="Script" path="res://scenes/player2.gd" id="1_m1j8e"]
+[ext_resource type="AudioStream" uid="uid://cakrfx32oowod" path="res://assets/coin.wav" id="3_63iqm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_62hb1"]
+
+[sub_resource type="Animation" id="Animation_ojws0"]
+resource_name = "MoveLeft"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [6.28319, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_uuf04"]
+resource_name = "MoveRight"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_t5g34"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_flc3o"]
+_data = {
+"MoveLeft": SubResource("Animation_ojws0"),
+"MoveRight": SubResource("Animation_uuf04"),
+"RESET": SubResource("Animation_t5g34")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fg2c8"]
+radius = 10.0499
+
+[node name="Player2" type="CharacterBody2D"]
+process_mode = 1
+floor_stop_on_slope = false
+floor_block_on_wall = false
+floor_max_angle = 3.14159
+script = ExtResource("1_m1j8e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_62hb1")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+position = Vector2(0, 5.96046e-08)
+scale = Vector2(0.117188, 0.117188)
+texture = ExtResource("1_4l272")
+
+[node name="Raycasts" type="Node2D" parent="."]
+
+[node name="DownRaycast" type="RayCast2D" parent="Raycasts"]
+modulate = Color(0, 1, 0, 1)
+enabled = false
+target_position = Vector2(0, 11)
+collision_mask = 2
+
+[node name="KinematicNormalRaycast" type="RayCast2D" parent="Raycasts"]
+modulate = Color(1, 0, 1, 1)
+enabled = false
+target_position = Vector2(0, 11)
+collision_mask = 2
+
+[node name="ForwardRaycast" type="RayCast2D" parent="Raycasts"]
+modulate = Color(1, 0, 0, 1)
+enabled = false
+target_position = Vector2(16, 0)
+collision_mask = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Labels" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 143.0
+offset_top = 79.0
+offset_right = 143.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Labels"]
+layout_mode = 0
+offset_left = -143.0
+offset_top = -80.0
+offset_right = -103.0
+offset_bottom = 24.0
+
+[node name="StateLabel" type="Label" parent="CanvasLayer/Labels/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+
+[node name="EnvironmentVelocity" type="Label" parent="CanvasLayer/Labels/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+
+[node name="MovementVelocity" type="Label" parent="CanvasLayer/Labels/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+
+[node name="TotalVelocity" type="Label" parent="CanvasLayer/Labels/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+
+[node name="FloorNormal" type="Label" parent="CanvasLayer/Labels/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_flc3o")
+}
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="collect" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("3_63iqm")
+volume_db = -5.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_fg2c8")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

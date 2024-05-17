@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://crw54rqjyqvfd"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_3ef3h"]
+[ext_resource type="Texture2D" uid="uid://bwp82yq3g26b" path="res://icon.svg" id="1_ehknw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ckrii"]
+
+[node name="Player" type="CharacterBody2D"]
+process_mode = 1
+floor_stop_on_slope = false
+floor_block_on_wall = false
+floor_max_angle = 3.14159
+floor_snap_length = 5.0
+script = ExtResource("1_3ef3h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ckrii")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="BodySprites" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="BodySprites"]
+position = Vector2(0, -1)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("1_ehknw")
+
+[node name="Sprite2D2" type="Sprite2D" parent="BodySprites"]
+visible = false
+position = Vector2(0, -1.814)
+scale = Vector2(0.041, 0.0869375)
+texture = ExtResource("1_ehknw")
+
+[node name="Sprite2D3" type="Sprite2D" parent="BodySprites"]
+visible = false
+position = Vector2(-3, 7.75)
+rotation = 0.523599
+scale = Vector2(0.041, 0.0869375)
+texture = ExtResource("1_ehknw")
+
+[node name="Sprite2D6" type="Sprite2D" parent="BodySprites"]
+visible = false
+position = Vector2(-5, -2)
+rotation = 0.523599
+scale = Vector2(0.041, 0.0869375)
+texture = ExtResource("1_ehknw")
+
+[node name="Sprite2D4" type="Sprite2D" parent="BodySprites"]
+visible = false
+position = Vector2(4, 7.75)
+rotation = -0.785398
+scale = Vector2(0.041, 0.0869375)
+texture = ExtResource("1_ehknw")
+
+[node name="Sprite2D5" type="Sprite2D" parent="BodySprites"]
+visible = false
+position = Vector2(6, -3)
+rotation = -0.785398
+scale = Vector2(0.041, 0.0869375)
+texture = ExtResource("1_ehknw")
+
+[node name="Raycasts" type="Node2D" parent="."]
+
+[node name="DownNormal" type="RayCast2D" parent="Raycasts"]
+modulate = Color(0, 1, 0, 1)
+enabled = false
+target_position = Vector2(0, 16)
+collision_mask = 2
+
+[node name="CheckForward" type="RayCast2D" parent="Raycasts"]
+modulate = Color(1, 0, 0, 1)
+enabled = false
+target_position = Vector2(16, 16)
+collision_mask = 2
